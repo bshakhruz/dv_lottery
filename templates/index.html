@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enter Entrant Information</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h3>Enter Entrant Information</h3>
+
+    <form id="entrantForm" action="/process" method="POST" enctype="multipart/form-data">
+        <div class="form-group">
+            <div class="card-header">1. Confirmation Number:</div>
+            <div class="card-body">
+                <div class="col-sm-12">
+                    <span id="helpConfirmationNumber" class="form-text" aria-describedby="txtCN">
+                        In the space below, type the confirmation number that was given when you applied.
+                    </span>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group m0050">
+                        <label class="sr-only" for="txtCN">Confirmation Number</label>
+                        <input name="ctl00$mainCPH$ucEntrantInfo$txtCN" maxlength="16" id="txtCN" class="form-control"
+                            type="text" placeholder="YYYYXXXXXXXXXXXX where YYYY is the program year">
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <span id="ConfirmationNumberValidator" class="validatortext" style="display:none;">Invalid Confirmation
+                        Number: Please enter the correct confirmation number that is 16 characters long (example:
+                        20251O0DZWY3DOV9)</span>
+                    <span id="ConfirmationNumberRequired" class="validatortext" style="display:none;">Confirmation Number is
+                        required.</span>
+                    <span id="txtCNValidator" class="validatortext" style="display:none;"></span>
+                </div>
+                <div class="col-sm-12">
+                    <a href="CheckConfirmation.aspx" class="small ml5">Forgot Confirmation Number</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="card-header">2. Last/Family Name:</div>
+            <div class="card-body">
+                <div class="col-sm-6">
+                    <input name="ctl00$mainCPH$ucEntrantInfo$txtLastName" maxlength="33" id="txtLastName"
+                        class="form-control" type="text" aria-label="Last/Family name">
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="card-header">3. Year of Birth:</div>
+            <div class="card-body">
+                <div class="col-sm-6">
+                    <input name="ctl00$mainCPH$ucEntrantInfo$txtYOB" maxlength="4" id="txtYOB" class="form-control"
+                        type="text" placeholder="yyyy">
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="card-header">4. Authentication</div>
+            <div class="card-body">
+                <div class="col-sm-6">
+                    <img class="LBD_CaptchaImage" id="c_checkstatus_uccaptcha30_CaptchaImage"
+                        src="/ESC/BotDetectCaptcha.ashx?get=image&amp;c=c_checkstatus_uccaptcha30&amp;t=ef14d96e3e2e4bbaaa37beddeeb58c6c"
+                        alt="CAPTCHA">
+                    <input name="ctl00$mainCPH$txtCodeInput" type="text" id="txtCodeInput" class="form-control"
+                        style="text-transform: uppercase;">
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="card-header">5. Upload Document:</div>
+            <div class="card-body">
+                <div class="col-sm-6">
+                    <input type="file" id="fileInput" name="file" class="form-control">
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="button" class="btn btn-secondary">Cancel</button>
+        </div>
+    </form>
+
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+    <script src="{{ url_for('static', filename='autofill.js') }}"></script>
+</body>
+</html>
